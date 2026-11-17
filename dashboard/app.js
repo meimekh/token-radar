@@ -151,12 +151,12 @@
         el('p', { class: 'eyebrow', text: 'Pre-token protocol radar' }),
         el('h1', { text: DATA.board_size + ' protocols with no token on record, ranked by implied value' }),
         el('p', { class: 'lede-text', text: 'Implied value is what a protocol\u2019s token would be worth if its record stayed exactly as it is today: a claim this board makes from the snapshot\u2019s own TVL, seven-day growth, age, category and chain coverage. It is not a prediction that a token arrives, and it is not a price.' }),
-        el('p', { class: 'lede-text', text: 'The house watchlist of ' + DATA.watchlist_size + ' protocols above $' + Math.round(FLOOR / 1e6) + 'M is this board\u2019s floor, never its ceiling: the other ' + DATA.early_size + ' ranked rows are pre-token protocols the floor left out \u2014 the ones the radar exists to find before the market does.' })
+        el('p', { class: 'lede-text', text: 'The house watchlist of ' + DATA.watchlist_size + ' protocols above $' + Math.round(FLOOR / 1e6) + 'M is this board\u2019s floor, never its ceiling: the other ' + DATA.early_size + ' ranked rows are pre-token protocols the floor left out \u2014 the ones the radar exists to find before the market does. A protocol leaves the ranking only on structural grounds, never by name or slug: a CEX, a bridge or a staking or wrapper product of a token that already trades, an exchange\u2019s own product, or a versioned pool whose TVL is its parent\u2019s.' })
       ),
       el('div', { class: 'facts' },
-        fact('Watchlist covered', DATA.watchlist_size + ' / ' + DATA.watchlist_size, 'every slug the snapshot names'),
-        fact('Ranked rows', String(DATA.board_size), 'record no token, not a product of one'),
-        fact('Early rows', String(DATA.early_size), 'below or outside the watchlist floor'),
+        fact('Watchlist covered', DATA.watchlist_covered + ' / ' + DATA.watchlist_size, 'every slug the snapshot names'),
+        fact('Ranked rows', String(DATA.board_size), 'no token on record, not a product of one'),
+        fact('Early rows', String(DATA.early_size), 'below or outside the floor'),
         fact('Set aside as live', String(DATA.live_size), 'token already trades: market cap is a fact'),
         fact('Top implied value', fmtUsd(RANKED.length ? RANKED[0].implied_value_usd : 0), RANKED.length ? RANKED[0].name : '')
       )
@@ -192,7 +192,7 @@
           el('li', { text: 'Maturity rises with the time the snapshot has tracked the protocol with no token on record and saturates at ' + MODEL.maturity_days + ' days (' + (MODEL.maturity_days / 365).toFixed(1) + ' years): a long record is evidence of a real protocol, not of a bigger claim. A missing listing date is assumed ' + MODEL.unknown_age_days + ' days.' }),
           el('li', { text: 'Category is the sector\u2019s share of value a token could capture, from the table below. It is a sector table, never a list of protocols, and the model has no per-protocol exception.' }),
           el('li', { text: 'Breadth rewards deployment across chains up to ' + MODEL.breadth_chains + ', then stops: more chains is more distribution, not unlimited value. The chain count is the snapshot\u2019s own list.' }),
-          el('li', { text: 'Confidence is separate from value: it reports how much of the record exists (listing date, seven-day change, category, chains, momentum, size above the house floor) on a 0..100 scale, sorts rows inside a band of value, and never moves a rank.' }),
+          el('li', { text: 'Confidence is separate from value: it reports how much of the record exists (listing date, seven-day change, category, chains, momentum, size above the house floor) on a 0..100 scale, and never moves a rank.' }),
           el('li', { text: 'A live-token protocol is never scored: its market cap is what the market says, so it is shown with its own number and status, filterable but never ranked.' })
         ),
         el('table', { class: 'mini' },
