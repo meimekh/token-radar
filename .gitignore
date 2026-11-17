@@ -1,0 +1,8 @@
+# The program's output directory: written by main.ts, never committed.
+/out/
+.qa-out-a/
+.qa-out-b/
+# QA scratch files
+.qa-*.txt
+__pycache__/
+*.pyc
