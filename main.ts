@@ -1,4 +1,5 @@
 // A working token-radar-01 entry (Node 22, standard library only).
+// Reads the sealed snapshot, ranks the pre-token protocols and writes the board for the judge.
 //
 // The program reads the sealed snapshot from /input/snapshot.json (or --input <file|dir>), scores every
 // pre-token protocol with the model in lib/model.ts, writes the ranked board to /output/board.json, and
